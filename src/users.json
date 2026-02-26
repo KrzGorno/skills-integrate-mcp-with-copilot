@@ -1,0 +1,22 @@
+{
+  "student_anna": {
+    "password": "student123",
+    "role": "student",
+    "email": "anna@mergington.edu"
+  },
+  "club_admin": {
+    "password": "clubadmin123",
+    "role": "clubAdmin",
+    "email": "club.admin@mergington.edu"
+  },
+  "hr_user": {
+    "password": "hr123",
+    "role": "hr",
+    "email": "hr@mergington.edu"
+  },
+  "school_admin": {
+    "password": "schooladmin123",
+    "role": "schoolAdmin",
+    "email": "admin@mergington.edu"
+  }
+}
