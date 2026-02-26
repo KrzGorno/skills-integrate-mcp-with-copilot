@@ -5,7 +5,8 @@ A super simple FastAPI application that allows students to view and sign up for 
 ## Features
 
 - View all available extracurricular activities
-- Sign up for activities
+- Authentication with role-based access control (RBAC)
+- Sign up and unregister with role-aware permissions
 
 ## Getting Started
 
@@ -30,7 +31,20 @@ A super simple FastAPI application that allows students to view and sign up for 
 | Method | Endpoint                                                          | Description                                                         |
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| POST   | `/auth/login`                                                     | Login and receive a bearer token                                    |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity (requires `Authorization: Bearer <token>`) |
+| DELETE | `/activities/{activity_name}/unregister?email=student@mergington.edu` | Unregister from an activity (requires `Authorization: Bearer <token>`) |
+
+## Authentication and Roles
+
+The app uses token-based authentication via `/auth/login`.
+
+- Roles: `student`, `clubAdmin`, `hr`, `schoolAdmin`
+- Protected endpoints: signup and unregister
+- Students can only sign up/unregister themselves (email must match the logged-in student)
+- Admin roles can sign up/unregister any student email
+
+Sample users are stored in `users.json`.
 
 ## Data Model
 
